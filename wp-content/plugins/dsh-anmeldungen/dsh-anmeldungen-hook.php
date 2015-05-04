@@ -22,7 +22,7 @@ function my_custom_post_dsh() {
     'description'   => 'Holds our dsh-anmeldungs and dsh-anmeldung specific data',
     'public'        => true,
     'menu_position' => 5,
-    'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+    'supports'      => array( 'title', 'thumbnail', 'custom-fields' ),
     'has_archive'   => true,
   );
   register_post_type( 'dsh-anmeldung', $args ); 
@@ -39,7 +39,7 @@ function wpcf7_to_post($cfdata) {
 	}
     
     // Post ID des Formulares angeben, welches "abgefangen" werden soll
-    if ( $cfdata->id() == '1712') {
+    if ( $cfdata->id() == '1739') {
         $newDSHAnmeldung = array(
             'post_title'=> $formdata['your-name'],
             'post_status' => 'publish', // Status
@@ -50,10 +50,12 @@ function wpcf7_to_post($cfdata) {
 		$newpostid = wp_insert_post($newDSHAnmeldung);
 
         // ggf. weitere Custom Fields befüllen, evtl später
-		//add_post_meta($newpostid, 'customfield01', $formdata['strasse']);
-		//add_post_meta($newpostid, 'customfield02', $formdata['plzort']);
+		add_post_meta($newpostid, 'customfield01', $formdata['your-subject']);//customfields müssen so heißen
+		add_post_meta($newpostid, 'customfield02', $formdata['your-email']);
+		add_post_meta($newpostid, 'customfield03', $formdata['your-message']);
                 
-        count_dsh();
+        $number = count_dsh();
+	
         if($number >= 15){
             $wpcf7_data->skip_mail = true;  
         }
@@ -82,7 +84,7 @@ function count_dsh(){
 
 function message_sidebar(){
     $anmeldungen = count_dsh();
-    $limit = 25;
+    $limit = 5;
     if($anmeldungen >= $limit){
         echo 'Tut uns leid! das Limit der Anmeldungen ist erreicht';
         
