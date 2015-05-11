@@ -1,0 +1,8 @@
+/* line 4, ../scss/snippet.scss */
+.zoomContainer .row {
+  margin-top: 2em;
+}
+/* line 7, ../scss/snippet.scss */
+.zoomContainer .row > .col-md-2 {
+  width: 14%;
+}
