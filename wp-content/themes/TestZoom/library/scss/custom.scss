@@ -4,10 +4,50 @@
 }
 $min-height:75px;
 $border-color:#ccc;
+.zoomContainer{
+    [id*="level-"]{
+        display:-webkit-flex;
+        display:flex;
+        margin-top: 2em;
+        position: relative;
+        > .col:not(#gl) {
+            width:14%;
+            height: inherit;
+        }
+        #gl{
+            flex:1;
+            -webkit-flex:1;
+        }
+        .zoomBox{
+            margin: 1%;
+            padding: .5em;
+            height: inherit;
+            border: {
+                width:1px;
+                style:solid;
+                color:$border-color;
+            }
+            * {
+                font-size: smaller;
+                color:inherit;
+
+            }
+            [id*="abt-0"] &, #gl &, [id*="gb-0"] &{
+                @include color-box (blue, white);
+            }
+            [id*="fb"] &, [id*="fa"] &{
+                @include color-box (green, #eee);
+            }
+            [id*="gb-9"] &, [id*="abt-9"] &{
+                @include color-box (yellow, #999);
+            }
+        }
+    }
+}
 /*.zoomContainer {
     text-align: center;
     .row {
-        margin-top: 2em;
+        
         > .col-md-2{
             width: 14%;
         }
@@ -55,27 +95,9 @@ $border-color:#ccc;
     }
 }
 .zoomBox {
-    padding:.5em;
     min-height: $min-height;
-    border: {
-        width:1px;
-        style:solid;
-        color:$border-color;
-    }
-    * {
-        font-size: smaller;
-        color:inherit;
 
-    }
-    [id*="abt-0"] &, #gl &, [id*="gb-0"] &{
-        @include color-box (blue, white);
-    }
-    [id*="fb"] &, [id*="fa"] &{
-        @include color-box (green, #eee);
-    }
-    [id*="gb-9"] &, [id*="abt-9"] &{
-        @include color-box (yellow, #999);
-    }
+   
     &:after {
         content:' ';
         display: block;

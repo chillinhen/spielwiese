@@ -1,7 +1,54 @@
+/* line 8, ../scss/custom.scss */
+.zoomContainer [id*="level-"] {
+  display: -webkit-flex;
+  display: flex;
+  margin-top: 2em;
+  position: relative;
+}
+/* line 13, ../scss/custom.scss */
+.zoomContainer [id*="level-"] > .col:not(#gl) {
+  width: 14%;
+  height: inherit;
+}
+/* line 17, ../scss/custom.scss */
+.zoomContainer [id*="level-"] #gl {
+  flex: 1;
+  -webkit-flex: 1;
+}
+/* line 21, ../scss/custom.scss */
+.zoomContainer [id*="level-"] .zoomBox {
+  margin: 1%;
+  padding: .5em;
+  height: inherit;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+}
+/* line 30, ../scss/custom.scss */
+.zoomContainer [id*="level-"] .zoomBox * {
+  font-size: smaller;
+  color: inherit;
+}
+/* line 35, ../scss/custom.scss */
+[id*="abt-0"] .zoomContainer [id*="level-"] .zoomBox, #gl .zoomContainer [id*="level-"] .zoomBox, [id*="gb-0"] .zoomContainer [id*="level-"] .zoomBox {
+  background: blue;
+  color: white;
+}
+/* line 38, ../scss/custom.scss */
+[id*="fb"] .zoomContainer [id*="level-"] .zoomBox, [id*="fa"] .zoomContainer [id*="level-"] .zoomBox {
+  background: green;
+  color: #eeeeee;
+}
+/* line 41, ../scss/custom.scss */
+[id*="gb-9"] .zoomContainer [id*="level-"] .zoomBox, [id*="abt-9"] .zoomContainer [id*="level-"] .zoomBox {
+  background: yellow;
+  color: #999999;
+}
+
 /*.zoomContainer {
     text-align: center;
     .row {
-        margin-top: 2em;
+        
         > .col-md-2{
             width: 14%;
         }
@@ -49,27 +96,9 @@
     }
 }
 .zoomBox {
-    padding:.5em;
     min-height: $min-height;
-    border: {
-        width:1px;
-        style:solid;
-        color:$border-color;
-    }
-    * {
-        font-size: smaller;
-        color:inherit;
 
-    }
-    [id*="abt-0"] &, #gl &, [id*="gb-0"] &{
-        @include color-box (blue, white);
-    }
-    [id*="fb"] &, [id*="fa"] &{
-        @include color-box (green, #eee);
-    }
-    [id*="gb-9"] &, [id*="abt-9"] &{
-        @include color-box (yellow, #999);
-    }
+   
     &:after {
         content:' ';
         display: block;
